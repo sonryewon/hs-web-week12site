@@ -734,8 +734,7 @@ checkoutBtn.onclick = async () => {
       .from('shop_orders')
       .insert({
         user_id: currentUser.id,
-        total_amount: totalAmount,
-        status: 'paid'
+        total_price: totalAmount
       })
       .select()
       .single();
@@ -746,7 +745,6 @@ checkoutBtn.onclick = async () => {
     const itemsPayload = cart.map(item => ({
       order_id: order.id,
       product_id: item.id,
-      product_name: item.name,
       price: item.price,
       quantity: item.quantity
     }));
